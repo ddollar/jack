@@ -1,0 +1,16 @@
+#!/usr/bin/env ruby
+
+$:.unshift File.expand_path("../../lib", __FILE__)
+
+require "jack/engine"
+
+def display_usage
+  puts "usage: jack <filename>"
+  exit 1
+end
+
+filename = ARGV.shift
+display_usage unless filename
+include Jack::Engine
+load filename
+Jack.run(ENV["QUEUE"])
